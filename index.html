@@ -1,132 +1,598 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pendapatan naik, laba turun | Studi Kasus PT Maju Bersama</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
-<style>
-:root{--bg:#fbf7f2;--card:#fffdf9;--text:#3b3a4a;--muted:#7a7889;--line:#ece5dc;
---sage:#7fb08f;--sage-bg:#e2f0e5;--sky:#7aa7cf;--sky-bg:#e0edf8;--lav:#9b8bc7;--lav-bg:#ebe5f7;
---peach:#d9825a;--peach-bg:#fde6d8;--butter:#fbf0c9;--track:#f1ebe3;--ink-on:#2f2e3b;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1d26;--card:#272632;--text:#ece9f3;--muted:#a9a6b8;--line:#38364a;
---sage:#8fc3a0;--sage-bg:#2a3a31;--sky:#8dbbe3;--sky-bg:#27374a;--lav:#b5a8e0;--lav-bg:#35304d;--peach:#f0a98a;--peach-bg:#47332b;--butter:#443e27;--track:#32313f;--ink-on:#ece9f3}}
-:root[data-theme="dark"]{--bg:#1e1d26;--card:#272632;--text:#ece9f3;--muted:#a9a6b8;--line:#38364a;
---sage:#8fc3a0;--sage-bg:#2a3a31;--sky:#8dbbe3;--sky-bg:#27374a;--lav:#b5a8e0;--lav-bg:#35304d;--peach:#f0a98a;--peach-bg:#47332b;--butter:#443e27;--track:#32313f;--ink-on:#ece9f3}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 "Plus Jakarta Sans",system-ui,sans-serif}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.2;letter-spacing:-.01em}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
-nav div{max-width:880px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;overflow-x:auto;white-space:nowrap;font-size:.88rem}
-nav b{font-family:Fraunces,Georgia,serif;margin-right:6px}
-nav a{color:var(--muted);text-decoration:none}
-nav a:hover{color:var(--text)}
-main{max-width:880px;margin:0 auto;padding:48px 20px 72px}
-.eyebrow{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
-.badge{display:inline-block;background:var(--butter);padding:2px 12px;border-radius:99px;font-size:.78rem;margin-right:10px;color:var(--text)}
-h1{font-size:clamp(2rem,5vw,3rem);margin:14px 0 16px}
-.lead{color:var(--muted);max-width:640px;margin:0}
-h2{font-size:1.55rem;margin:64px 0 14px;display:flex;gap:12px;align-items:baseline}
-h2 i{font-style:normal;font-size:.9rem;background:var(--lav-bg);color:var(--lav);width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;flex:none;font-family:"Plus Jakarta Sans",sans-serif;font-weight:600}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:36px}
-.kpi{border-radius:18px;padding:18px 20px;color:var(--ink-on)}
-.kpi:nth-child(1){background:var(--sky-bg)}.kpi:nth-child(2){background:var(--sage-bg)}
-.kpi:nth-child(3){background:var(--lav-bg)}.kpi:nth-child(4){background:var(--peach-bg)}
-.kpi span{font-size:.82rem;opacity:.75}
-.kpi strong{display:block;font-family:Fraunces,Georgia,serif;font-size:1.45rem;margin-top:2px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px}
-.card h3{font-size:1.05rem;margin:0 0 12px}
-.row{display:grid;grid-template-columns:92px 1fr 104px;gap:10px;align-items:center;margin:10px 0;font-size:.88rem}
-.track{background:var(--track);border-radius:99px;height:14px;overflow:hidden}
-.fill{height:100%;border-radius:99px;background:var(--sky)}
-.fill.low{background:var(--peach)}
-.val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
-.note{background:var(--butter);border-radius:14px;padding:14px 18px;margin:18px 0 0;font-size:.92rem;color:var(--text)}
-.note b{display:block}
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-th{color:var(--muted);font-weight:500;font-size:.82rem}
-.n{text-align:right;font-variant-numeric:tabular-nums}
-.flag td:first-child{font-weight:600}
-.flag td.hl{background:var(--peach-bg);border-radius:8px}
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-.duo div{border-radius:18px;padding:20px;color:var(--ink-on)}
-.duo .bad{background:var(--peach-bg)}.duo .ok{background:var(--sage-bg)}
-.duo strong{display:block;font-family:Fraunces,Georgia,serif;font-size:2.2rem;line-height:1.1}
-.duo span{font-size:.88rem;opacity:.8}
-.rec{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--lav);border-radius:18px;padding:8px 24px}
-.rec li{margin:12px 0}
-.rec mark{background:var(--peach-bg);color:var(--text);padding:1px 8px;border-radius:6px}
-footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
-@media (max-width:480px){.row{grid-template-columns:78px 1fr 90px}}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Pendapatan naik, laba turun | Studi Kasus PT Maju Bersama</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --bg: #fbf7f2;
+            --card: #fffdf9;
+            --text: #3b3a4a;
+            --muted: #7a7889;
+            --line: #ece5dc;
+            --sage: #7fb08f;
+            --sage-bg: #e2f0e5;
+            --sky: #7aa7cf;
+            --sky-bg: #e0edf8;
+            --lav: #9b8bc7;
+            --lav-bg: #ebe5f7;
+            --peach: #d9825a;
+            --peach-bg: #fde6d8;
+            --butter: #fbf0c9;
+            --track: #f1ebe3;
+            --ink-on: #2f2e3b;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #1e1d26;
+                --card: #272632;
+                --text: #ece9f3;
+                --muted: #a9a6b8;
+                --line: #38364a;
+                --sage: #8fc3a0;
+                --sage-bg: #2a3a31;
+                --sky: #8dbbe3;
+                --sky-bg: #27374a;
+                --lav: #b5a8e0;
+                --lav-bg: #35304d;
+                --peach: #f0a98a;
+                --peach-bg: #47332b;
+                --butter: #443e27;
+                --track: #32313f;
+                --ink-on: #ece9f3;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #1e1d26;
+            --card: #272632;
+            --text: #ece9f3;
+            --muted: #a9a6b8;
+            --line: #38364a;
+            --sage: #8fc3a0;
+            --sage-bg: #2a3a31;
+            --sky: #8dbbe3;
+            --sky-bg: #27374a;
+            --lav: #b5a8e0;
+            --lav-bg: #35304d;
+            --peach: #f0a98a;
+            --peach-bg: #47332b;
+            --butter: #443e27;
+            --track: #32313f;
+            --ink-on: #ece9f3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.7 "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: Fraunces, Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -.01em;
+        }
+
+        nav {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 20;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+
+        nav div {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            font-size: .88rem;
+        }
+
+        nav b {
+            font-family: Fraunces, Georgia, serif;
+            margin-right: 6px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 48px 20px 72px;
+        }
+
+        .eyebrow {
+            color: var(--muted);
+            font-size: .85rem;
+            letter-spacing: .04em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--butter);
+            padding: 2px 12px;
+            border-radius: 99px;
+            font-size: .78rem;
+            margin-right: 10px;
+            color: var(--text);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 14px 0 16px;
+        }
+
+        .lead {
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.55rem;
+            margin: 64px 0 14px;
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+        }
+
+        h2 i {
+            font-style: normal;
+            font-size: .9rem;
+            background: var(--lav-bg);
+            color: var(--lav);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            flex: none;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-weight: 600;
+        }
+
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .kpi {
+            border-radius: 18px;
+            padding: 18px 20px;
+            color: var(--ink-on);
+        }
+
+        .kpi:nth-child(1) { background: var(--sky-bg); }
+        .kpi:nth-child(2) { background: var(--sage-bg); }
+        .kpi:nth-child(3) { background: var(--lav-bg); }
+        .kpi:nth-child(4) { background: var(--peach-bg); }
+
+        .kpi span {
+            font-size: .82rem;
+            opacity: .75;
+        }
+
+        .kpi strong {
+            display: block;
+            font-family: Fraunces, Georgia, serif;
+            font-size: 1.45rem;
+            margin-top: 2px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 20px 22px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+            gap: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin: 0 0 12px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 92px 1fr 104px;
+            gap: 10px;
+            align-items: center;
+            margin: 10px 0;
+            font-size: .88rem;
+        }
+
+        .track {
+            background: var(--track);
+            border-radius: 99px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            border-radius: 99px;
+            background: var(--sky);
+        }
+
+        .fill.low {
+            background: var(--peach);
+        }
+
+        .val {
+            text-align: right;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .note {
+            background: var(--butter);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin: 18px 0 0;
+            font-size: .92rem;
+            color: var(--text);
+        }
+
+        .note b {
+            display: block;
+        }
+
+        .tw {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+        }
+
+        th, td {
+            padding: 11px 12px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        th {
+            color: var(--muted);
+            font-weight: 500;
+            font-size: .82rem;
+        }
+
+        .n {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .flag td:first-child {
+            font-weight: 600;
+        }
+
+        .flag td.hl {
+            background: var(--peach-bg);
+            border-radius: 8px;
+        }
+
+        .duo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .duo div {
+            border-radius: 18px;
+            padding: 20px;
+            color: var(--ink-on);
+        }
+
+        .duo .bad {
+            background: var(--peach-bg);
+        }
+
+        .duo .ok {
+            background: var(--sage-bg);
+        }
+
+        .duo strong {
+            display: block;
+            font-family: Fraunces, Georgia, serif;
+            font-size: 2.2rem;
+            line-height: 1.1;
+        }
+
+        .duo span {
+            font-size: .88rem;
+            opacity: .8;
+        }
+
+        .rec {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 6px solid var(--lav);
+            border-radius: 18px;
+            padding: 8px 24px;
+        }
+
+        .rec li {
+            margin: 12px 0;
+        }
+
+        .rec mark {
+            background: var(--peach-bg);
+            color: var(--text);
+            padding: 1px 8px;
+            border-radius: 6px;
+        }
+
+        footer {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: .84rem;
+        }
+
+        @media (max-width: 480px) {
+            .row {
+                grid-template-columns: 78px 1fr 90px;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav><div><b>Studi kasus</b><a href="#ringkasan">Ringkasan</a><a href="#kategori">Kategori</a><a href="#wilayah">Wilayah</a><a href="#diskon">Diskon</a><a href="#rekomendasi">Rekomendasi</a></div></nav>
-<main>
-<header>
-<p class="eyebrow"><span class="badge">Data simulasi</span>Analisis diagnostik · preskriptif</p>
-<h1>Pendapatan naik, tapi labanya ke mana?</h1>
-<p class="lead">Studi kasus PT Maju Bersama: omzet tumbuh, laba bersih justru turun. Kita telusuri dari 2.000 transaksi untuk mencari tahu di mana laba tertahan dan apa yang bisa dilakukan.</p>
-<section class="kpis" aria-label="Ringkasan angka">
-<div class="kpi"><span>Total transaksi</span><strong>2.000</strong></div>
-<div class="kpi"><span>Pendapatan kotor</span><strong>Rp 15,43 miliar</strong></div>
-<div class="kpi"><span>Laba bersih</span><strong>Rp 1,61 miliar</strong></div>
-<div class="kpi"><span>Margin keseluruhan</span><strong>11,3%</strong></div>
-</section>
-</header>
+    <nav>
+        <div>
+            <b>Studi kasus</b>
+            <a href="#ringkasan">Ringkasan</a>
+            <a href="#kategori">Kategori</a>
+            <a href="#wilayah">Wilayah</a>
+            <a href="#diskon">Diskon</a>
+            <a href="#rekomendasi">Rekomendasi</a>
+        </div>
+    </nav>
 
-<h2 id="ringkasan"><i>1</i>Di mana laba terkumpul?</h2>
-<div class="grid2">
-<div class="card"><h3>Laba bersih per kategori</h3>
-<div class="row"><span>Furnitur</span><div class="track"><div class="fill low" style="width:70.7%"></div></div><span class="val">Rp 328,3 jt</span></div>
-<div class="row"><span>Pakaian</span><div class="track"><div class="fill" style="width:79.5%"></div></div><span class="val">Rp 369,2 jt</span></div>
-<div class="row"><span>Alat Kantor</span><div class="track"><div class="fill" style="width:97.3%"></div></div><span class="val">Rp 452,1 jt</span></div>
-<div class="row"><span>Elektronik</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">Rp 464,6 jt</span></div></div>
-<div class="card"><h3>Laba bersih per wilayah</h3>
-<div class="row"><span>Jawa</span><div class="track"><div class="fill low" style="width:81.6%"></div></div><span class="val">Rp 363,7 jt</span></div>
-<div class="row"><span>Sumatera</span><div class="track"><div class="fill" style="width:89.9%"></div></div><span class="val">Rp 400,5 jt</span></div>
-<div class="row"><span>Kalimantan</span><div class="track"><div class="fill" style="width:90.8%"></div></div><span class="val">Rp 404,5 jt</span></div>
-<div class="row"><span>Sulawesi</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">Rp 445,5 jt</span></div></div>
-</div>
-<p class="note"><b>Cara membaca</b>Batang jingga menandai yang terendah di tiap kelompok. Panjang batang dibandingkan dengan yang tertinggi.</p>
+    <main>
+        <header>
+            <p class="eyebrow">
+                <span class="badge">Data simulasi</span>Analisis diagnostik · preskriptif
+            </p>
+            <h1>Pendapatan naik, tapi labanya ke mana?</h1>
+            <p class="lead">Studi kasus PT Maju Bersama: omzet tumbuh, laba bersih justru turun. Kita telusuri dari 2.000 transaksi untuk mencari tahu di mana laba tertahan dan apa yang bisa dilakukan.</p>
+            
+            <section class="kpis" aria-label="Ringkasan angka">
+                <div class="kpi">
+                    <span>Total transaksi</span>
+                    <strong>2.000</strong>
+                </div>
+                <div class="kpi">
+                    <span>Pendapatan kotor</span>
+                    <strong>Rp 15,43 miliar</strong>
+                </div>
+                <div class="kpi">
+                    <span>Laba bersih</span>
+                    <strong>Rp 1,61 miliar</strong>
+                </div>
+                <div class="kpi">
+                    <span>Margin keseluruhan</span>
+                    <strong>11,3%</strong>
+                </div>
+            </section>
+        </header>
 
-<h2 id="kategori"><i>2</i>Performa per kategori produk</h2>
-<div class="card tw"><table><thead><tr><th>Kategori</th><th class="n">Penjualan</th><th class="n">Laba bersih</th><th class="n">Rata-rata diskon</th><th class="n">Rata-rata margin</th></tr></thead><tbody>
-<tr><td>Alat Kantor</td><td class="n">Rp 4,52 miliar</td><td class="n">Rp 452,1 juta</td><td class="n">7,4%</td><td class="n">9,4%</td></tr>
-<tr><td>Elektronik</td><td class="n">Rp 4,57 miliar</td><td class="n">Rp 464,6 juta</td><td class="n">7,6%</td><td class="n">9,6%</td></tr>
-<tr class="flag"><td>Furnitur</td><td class="n">Rp 3,26 miliar</td><td class="n hl">Rp 328,3 juta</td><td class="n hl">7,9%</td><td class="n">9,1%</td></tr>
-<tr><td>Pakaian</td><td class="n">Rp 3,08 miliar</td><td class="n">Rp 369,2 juta</td><td class="n">6,5%</td><td class="n">11,2%</td></tr>
-</tbody></table></div>
+        <h2 id="ringkasan"><i>1</i>Di mana laba terkumpul?</h2>
+        <div class="grid2">
+            <div class="card">
+                <h3>Laba bersih per kategori</h3>
+                <div class="row">
+                    <span>Furnitur</span>
+                    <div class="track"><div class="fill low" style="width:70.7%"></div></div>
+                    <span class="val">Rp 328,3 jt</span>
+                </div>
+                <div class="row">
+                    <span>Pakaian</span>
+                    <div class="track"><div class="fill" style="width:79.5%"></div></div>
+                    <span class="val">Rp 369,2 jt</span>
+                </div>
+                <div class="row">
+                    <span>Alat Kantor</span>
+                    <div class="track"><div class="fill" style="width:97.3%"></div></div>
+                    <span class="val">Rp 452,1 jt</span>
+                </div>
+                <div class="row">
+                    <span>Elektronik</span>
+                    <div class="track"><div class="fill" style="width:100%"></div></div>
+                    <span class="val">Rp 464,6 jt</span>
+                </div>
+            </div>
 
-<h2 id="wilayah"><i>3</i>Performa per wilayah</h2>
-<div class="card tw"><table><thead><tr><th>Wilayah</th><th class="n">Penjualan</th><th class="n">Laba bersih</th><th class="n">Rata-rata diskon</th><th class="n">Rata-rata margin</th></tr></thead><tbody>
-<tr class="flag"><td>Jawa</td><td class="n">Rp 3,83 miliar</td><td class="n hl">Rp 363,7 juta</td><td class="n">7,5%</td><td class="n">9,4%</td></tr>
-<tr><td>Kalimantan</td><td class="n">Rp 4,10 miliar</td><td class="n">Rp 404,5 juta</td><td class="n">7,8%</td><td class="n">9,4%</td></tr>
-<tr><td>Sulawesi</td><td class="n">Rp 3,77 miliar</td><td class="n">Rp 445,5 juta</td><td class="n">6,8%</td><td class="n">10,5%</td></tr>
-<tr><td>Sumatera</td><td class="n">Rp 3,73 miliar</td><td class="n">Rp 400,5 juta</td><td class="n">7,2%</td><td class="n">9,9%</td></tr>
-</tbody></table></div>
+            <div class="card">
+                <h3>Laba bersih per wilayah</h3>
+                <div class="row">
+                    <span>Jawa</span>
+                    <div class="track"><div class="fill low" style="width:81.6%"></div></div>
+                    <span class="val">Rp 363,7 jt</span>
+                </div>
+                <div class="row">
+                    <span>Sumatera</span>
+                    <div class="track"><div class="fill" style="width:89.9%"></div></div>
+                    <span class="val">Rp 400,5 jt</span>
+                </div>
+                <div class="row">
+                    <span>Kalimantan</span>
+                    <div class="track"><div class="fill" style="width:90.8%"></div></div>
+                    <span class="val">Rp 404,5 jt</span>
+                </div>
+                <div class="row">
+                    <span>Sulawesi</span>
+                    <div class="track"><div class="fill" style="width:100%"></div></div>
+                    <span class="val">Rp 445,5 jt</span>
+                </div>
+            </div>
+        </div>
+        <p class="note"><b>Cara membaca</b> Batang jingga menandai yang terendah di tiap kelompok. Panjang batang dibandingkan dengan yang tertinggi.</p>
 
-<h2 id="diskon"><i>4</i>Dampak diskon besar</h2>
-<p>Diskon besar menggerus margin karena HPP dan biaya operasional tetap sama. Dari 272 transaksi berdiskon 25% ke atas, hasilnya jauh berbeda dari transaksi lainnya.</p>
-<div class="duo"><div class="bad"><strong>-19,1%</strong><span>Margin laba pada diskon 25% ke atas</span></div><div class="ok"><strong>14,6%</strong><span>Margin laba pada diskon lebih kecil</span></div></div>
+        <h2 id="kategori"><i>2</i>Performa per kategori produk</h2>
+        <div class="card tw">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th class="n">Penjualan</th>
+                        <th class="n">Laba bersih</th>
+                        <th class="n">Rata-rata diskon</th>
+                        <th class="n">Rata-rata margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alat Kantor</td>
+                        <td class="n">Rp 4,52 miliar</td>
+                        <td class="n">Rp 452,1 juta</td>
+                        <td class="n">7,4%</td>
+                        <td class="n">9,4%</td>
+                    </tr>
+                    <tr>
+                        <td>Elektronik</td>
+                        <td class="n">Rp 4,57 miliar</td>
+                        <td class="n">Rp 464,6 juta</td>
+                        <td class="n">7,6%</td>
+                        <td class="n">9,6%</td>
+                    </tr>
+                    <tr class="flag">
+                        <td>Furnitur</td>
+                        <td class="n">Rp 3,26 miliar</td>
+                        <td class="n hl">Rp 328,3 juta</td>
+                        <td class="n hl">7,9%</td>
+                        <td class="n">9,1%</td>
+                    </tr>
+                    <tr>
+                        <td>Pakaian</td>
+                        <td class="n">Rp 3,08 miliar</td>
+                        <td class="n">Rp 369,2 juta</td>
+                        <td class="n">6,5%</td>
+                        <td class="n">11,2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<h2 id="rekomendasi"><i>5</i>Rekomendasi tindakan</h2>
-<div class="rec"><ul>
-<li>Kategori laba terendah: <mark>Furnitur</mark> (Rp 328,3 juta, margin 9,1%).</li>
-<li>Rata-rata diskon tertinggi juga ada pada <mark>Furnitur</mark> (7,9%).</li>
-<li>Wilayah laba terendah: <mark>Jawa</mark> (Rp 363,7 juta).</li>
-<li>Batasi diskon maksimal 10% pada kategori bermasalah dan tinjau ulang diskon 25% ke atas.</li>
-<li>Evaluasi biaya operasional dan logistik pada wilayah dengan laba terendah.</li>
-</ul></div>
+        <h2 id="wilayah"><i>3</i>Performa per wilayah</h2>
+        <div class="card tw">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Wilayah</th>
+                        <th class="n">Penjualan</th>
+                        <th class="n">Laba bersih</th>
+                        <th class="n">Rata-rata diskon</th>
+                        <th class="n">Rata-rata margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="flag">
+                        <td>Jawa</td>
+                        <td class="n">Rp 3,83 miliar</td>
+                        <td class="n hl">Rp 363,7 juta</td>
+                        <td class="n">7,5%</td>
+                        <td class="n">9,4%</td>
+                    </tr>
+                    <tr>
+                        <td>Kalimantan</td>
+                        <td class="n">Rp 4,10 miliar</td>
+                        <td class="n">Rp 404,5 juta</td>
+                        <td class="n">7,8%</td>
+                        <td class="n">9,4%</td>
+                    </tr>
+                    <tr>
+                        <td>Sulawesi</td>
+                        <td class="n">Rp 3,77 miliar</td>
+                        <td class="n">Rp 445,5 juta</td>
+                        <td class="n">6,8%</td>
+                        <td class="n">10,5%</td>
+                    </tr>
+                    <tr>
+                        <td>Sumatera</td>
+                        <td class="n">Rp 3,73 miliar</td>
+                        <td class="n">Rp 400,5 juta</td>
+                        <td class="n">7,2%</td>
+                        <td class="n">9,9%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<footer>Data dibangkitkan acak (seed 123) dengan asumsi HPP 60% dan biaya operasional 10–35% dari penjualan. Selisih antar kategori dan wilayah relatif kecil, jadi kesimpulan ini hanya ilustrasi metode. Ganti dengan data transaksi nyata untuk analisis sebenarnya.</footer>
-</main>
+        <h2 id="diskon"><i>4</i>Dampak diskon besar</h2>
+        <p>Diskon besar menggerus margin karena HPP dan biaya operasional tetap sama. Dari 272 transaksi berdiskon 25% ke atas, hasilnya jauh berbeda dari transaksi lainnya.</p>
+        <div class="duo">
+            <div class="bad">
+                <strong>-19,1%</strong>
+                <span>Margin laba pada diskon 25% ke atas</span>
+            </div>
+            <div class="ok">
+                <strong>14,6%</strong>
+                <span>Margin laba pada diskon lebih kecil</span>
+            </div>
+        </div>
+
+        <h2 id="rekomendasi"><i>5</i>Rekomendasi tindakan</h2>
+        <div class="rec">
+            <ul>
+                <li>Kategori laba terendah: <mark>Furnitur</mark> (Rp 328,3 juta, margin 9,1%).</li>
+                <li>Rata-rata diskon tertinggi juga ada pada <mark>Furnitur</mark> (7,9%).</li>
+                <li>Wilayah laba terendah: <mark>Jawa</mark> (Rp 363,7 juta).</li>
+                <li>Batasi diskon maksimal 10% pada kategori bermasalah dan tinjau ulang diskon 25% ke atas.</li>
+                <li>Evaluasi biaya operasional dan logistik pada wilayah dengan laba terendah.</li>
+            </ul>
+        </div>
+
+        <footer>
+            Data dibangkitkan acak (seed 123) dengan asumsi HPP 60% dan biaya operasional 10–35% dari penjualan. Selisih antar kategori dan wilayah relatif kecil, jadi kesimpulan ini hanya ilustrasi metode. Ganti dengan data transaksi nyata untuk analisis sebenarnya.
+        </footer>
+    </main>
 </body>
 </html>
